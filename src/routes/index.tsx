@@ -117,17 +117,23 @@ function Index() {
   );
 }
 
-function Logo({ className = "" }: { className?: string }) {
+function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const sizes = {
+    sm: { mark: "h-8 w-8", text: "text-xl" },
+    md: { mark: "h-9 w-9", text: "text-2xl" },
+    lg: { mark: "h-11 w-11", text: "text-3xl" },
+  };
+  const { mark, text } = sizes[size];
   return (
-    <a href="#top" className={`inline-flex items-center gap-2.5 ${className}`}>
+    <a href="#top" className="inline-flex items-center gap-2">
       <img
         src={logoMark}
         alt="Moy9Web"
         width={512}
         height={512}
-        className="h-9 w-9 object-contain"
+        className={`${mark} object-contain`}
       />
-      <span className="font-display text-2xl leading-none tracking-tight text-foreground">
+      <span className={`font-display ${text} leading-none tracking-tight text-foreground`}>
         Moy9Web
       </span>
     </a>
