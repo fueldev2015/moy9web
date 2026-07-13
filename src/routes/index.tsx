@@ -132,9 +132,6 @@ function Header() {
           <span className="font-display text-2xl leading-none tracking-tight text-foreground">
             Moy9Web
           </span>
-          <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
-            Est. MMXV
-          </span>
         </a>
         <nav className="hidden items-center gap-10 md:flex">
           {nav.map((n) => (
