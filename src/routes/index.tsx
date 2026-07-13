@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
+import logoMark from "@/assets/moy9web-mark.png";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
