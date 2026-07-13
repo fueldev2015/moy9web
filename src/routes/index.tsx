@@ -132,9 +132,6 @@ function Header() {
           <span className="font-display text-2xl leading-none tracking-tight text-foreground">
             Moy9Web
           </span>
-          <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
-            Est. MMXV
-          </span>
         </a>
         <nav className="hidden items-center gap-10 md:flex">
           {nav.map((n) => (
@@ -161,7 +158,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-40 pb-32 md:pt-56 md:pb-40">
+    <section id="top" className="relative isolate overflow-hidden pt-40 pb-24 md:pt-56 md:pb-32">
       <img
         src={heroImg}
         alt=""
@@ -203,7 +200,7 @@ function Hero() {
           </div>
         </div>
 
-        <dl className="mt-24 grid grid-cols-2 gap-y-8 border-t border-border pt-10 md:grid-cols-4">
+        <dl className="mt-16 grid grid-cols-2 gap-y-8 border-t border-border pt-10 md:grid-cols-4">
           {[
             ["11", "Years in practice"],
             ["87", "Brands shaped"],
@@ -245,7 +242,7 @@ function Marquee() {
 
 function Services() {
   return (
-    <section id="services" className="mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-40">
+    <section id="services" className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
       <div className="grid gap-10 md:grid-cols-[1fr_1.5fr]">
         <div>
           <p className="mb-6 text-[11px] uppercase tracking-[0.35em] text-gold">§ Services</p>
@@ -260,7 +257,7 @@ function Services() {
         </p>
       </div>
 
-      <div className="mt-20 grid gap-px bg-border md:grid-cols-2">
+      <div className="mt-16 grid gap-px bg-border md:grid-cols-2">
         {services.map((s) => (
           <article
             key={s.n}
@@ -293,7 +290,7 @@ function Services() {
 
 function Portfolio() {
   return (
-    <section id="work" className="border-t border-border bg-card/30 py-32 md:py-40">
+    <section id="work" className="border-t border-border bg-card/30 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -309,7 +306,7 @@ function Portfolio() {
           </p>
         </div>
 
-        <div className="mt-20 space-y-24">
+        <div className="mt-16 space-y-20">
           {works.map((w, i) => (
             <article
               key={w.client}
@@ -353,8 +350,8 @@ function Portfolio() {
 
 function Testimonials() {
   return (
-    <section id="voices" className="mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-40">
-      <div className="mb-20 max-w-3xl">
+    <section id="voices" className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
+      <div className="mb-16 max-w-3xl">
         <p className="mb-6 text-[11px] uppercase tracking-[0.35em] text-gold">§ Voices</p>
         <h2 className="font-display text-5xl leading-[0.95] md:text-6xl">
           Kind words from<br />
@@ -422,7 +419,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="relative border-t border-border bg-card/40 py-32 md:py-40">
+    <section id="contact" className="relative border-t border-border bg-card/40 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid gap-16 md:grid-cols-[1fr_1.1fr]">
           <div>
