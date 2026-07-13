@@ -317,19 +317,19 @@ function Portfolio() {
                 i % 2 === 1 ? "md:[&>figure]:order-2" : ""
               }`}
             >
-              <figure className="md:col-span-7">
-                <div className="overflow-hidden">
+              <figure className="md:col-span-5">
+                <div className="overflow-hidden aspect-[4/3]">
                   <img
                     src={w.img}
                     alt={`${w.client} — ${w.title}`}
                     width={1200}
-                    height={1400}
+                    height={900}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.03]"
                   />
                 </div>
               </figure>
-              <div className="md:col-span-5">
+              <div className="md:col-span-7">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{w.tag}</p>
                 <p className="mt-4 font-display text-2xl italic text-muted-foreground">
                   {w.client}
