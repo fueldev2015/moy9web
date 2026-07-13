@@ -73,7 +73,7 @@ const works = [
 const voices = [
   {
     quote:
-      "Auric operates like an in-house creative studio and a McKinsey deck had a very well-dressed child. Revenue is up 214% year over year.",
+      "Moy9Web operates like an in-house creative studio and a McKinsey deck had a very well-dressed child. Revenue is up 214% year over year.",
     name: "Elena Marchetti",
     role: "CEO, Maison Ferre",
     img: person1,
@@ -87,7 +87,7 @@ const voices = [
   },
   {
     quote:
-      "Every agency promised craft. Auric is the only one that delivered it — down to the kerning of the invoice.",
+      "Every agency promised craft. Moy9Web is the only one that delivered it — down to the kerning of the invoice.",
     name: "Sara Lindqvist",
     role: "Founder, Halberd",
     img: person3,
@@ -183,7 +183,7 @@ function Hero() {
         </h1>
         <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Auric is a senior team of strategists, designers, and engineers building brand systems,
+            Moy9Web is a senior team of strategists, designers, and engineers building brand systems,
             digital products, and growth engines for companies that intend to last a hundred years.
           </p>
           <div className="flex flex-wrap items-center gap-4">
@@ -565,7 +565,7 @@ function Footer() {
       <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
           <p className="font-display text-4xl leading-none">
-            Auric<span className="text-gold">.</span>
+            Moy9Web
           </p>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             A boutique IT and marketing atelier for brands with a hundred-year horizon.
@@ -594,7 +594,7 @@ function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-6 text-[11px] uppercase tracking-[0.25em] text-muted-foreground md:flex-row md:items-center md:justify-between md:px-12">
-          <p>© {new Date().getFullYear()} Auric Agency. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Moy9Web Agency. All rights reserved.</p>
           <p>Crafted in three time zones.</p>
         </div>
       </div>
