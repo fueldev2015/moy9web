@@ -161,7 +161,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-40 pb-24 md:pt-56 md:pb-40">
+    <section id="top" className="relative isolate overflow-hidden pt-40 pb-32 md:pt-56 md:pb-40">
       <img
         src={heroImg}
         alt=""
