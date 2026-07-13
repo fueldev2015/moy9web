@@ -441,7 +441,7 @@ function Contact() {
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Email
                 </dt>
-                <dd className="text-foreground">studio@auric.agency</dd>
+                <dd className="text-foreground">studio@moy9web.com</dd>
               </div>
               <div className="flex gap-6">
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -453,7 +453,7 @@ function Contact() {
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Press
                 </dt>
-                <dd className="text-foreground">press@auric.agency</dd>
+                <dd className="text-foreground">press@moy9web.com</dd>
               </div>
             </dl>
           </div>
