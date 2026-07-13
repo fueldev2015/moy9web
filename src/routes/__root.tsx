@@ -79,16 +79,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Moy9Web is a boutique IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies.",
+          "Moy9Web is a IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies.",
       },
       { name: "author", content: "Moy9Web Agency" },
-      { property: "og:title", content: "Moy9Web — IT & Marketing Agency" },
+      { property: "og:title", content: "Moy9Web — IT & Marketing Agency for Ambitious Brands" },
       {
         property: "og:description",
-        content: "Brand, product, and growth for category-defining companies.",
+        content: "Moy9Web is a IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Moy9Web — IT & Marketing Agency for Ambitious Brands" },
+      { name: "twitter:description", content: "Moy9Web is a IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7084cde5-ad1b-4f8b-915d-5d41431d2fb5/id-preview-d6a077cb--027b4eb9-3653-4b73-835e-d82b3ff530d7.lovable.app-1783918319460.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7084cde5-ad1b-4f8b-915d-5d41431d2fb5/id-preview-d6a077cb--027b4eb9-3653-4b73-835e-d82b3ff530d7.lovable.app-1783918319460.png" },
     ],
     links: [
       {
@@ -105,7 +109,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
