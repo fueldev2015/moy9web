@@ -565,11 +565,9 @@ function SelectField({ label, name }: { label: string; name: string }) {
 function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-12">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-6 py-12 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
-          <p className="font-display text-4xl leading-none">
-            Moy9Web
-          </p>
+          <Logo className="text-3xl" />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             A boutique IT and marketing atelier for brands with a hundred-year horizon.
           </p>
