@@ -122,8 +122,15 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
         <a href="#top" className="flex items-center gap-3">
+          <img
+            src={logoMark}
+            alt=""
+            width={512}
+            height={512}
+            className="h-8 w-8 object-contain"
+          />
           <span className="font-display text-2xl leading-none tracking-tight text-foreground">
-            Auric<span className="text-gold">.</span>
+            Moy9Web
           </span>
           <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
             Est. MMXV
