@@ -117,22 +117,28 @@ function Index() {
   );
 }
 
+function Logo({ className = "" }: { className?: string }) {
+  return (
+    <a href="#top" className={`inline-flex items-center gap-2.5 ${className}`}>
+      <img
+        src={logoMark}
+        alt="Moy9Web"
+        width={512}
+        height={512}
+        className="h-9 w-9 object-contain"
+      />
+      <span className="font-display text-2xl leading-none tracking-tight text-foreground">
+        Moy9Web
+      </span>
+    </a>
+  );
+}
+
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
-        <a href="#top" className="flex items-center gap-3">
-          <img
-            src={logoMark}
-            alt=""
-            width={512}
-            height={512}
-            className="h-8 w-8 object-contain"
-          />
-          <span className="font-display text-2xl leading-none tracking-tight text-foreground">
-            Moy9Web
-          </span>
-        </a>
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-12">
+        <Logo />
         <nav className="hidden items-center gap-10 md:flex">
           {nav.map((n) => (
             <a
