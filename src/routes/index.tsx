@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
+import logoMark from "@/assets/moy9web-mark.png";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -72,7 +73,7 @@ const works = [
 const voices = [
   {
     quote:
-      "Auric operates like an in-house creative studio and a McKinsey deck had a very well-dressed child. Revenue is up 214% year over year.",
+      "Moy9Web operates like an in-house creative studio and a McKinsey deck had a very well-dressed child. Revenue is up 214% year over year.",
     name: "Elena Marchetti",
     role: "CEO, Maison Ferre",
     img: person1,
@@ -86,7 +87,7 @@ const voices = [
   },
   {
     quote:
-      "Every agency promised craft. Auric is the only one that delivered it — down to the kerning of the invoice.",
+      "Every agency promised craft. Moy9Web is the only one that delivered it — down to the kerning of the invoice.",
     name: "Sara Lindqvist",
     role: "Founder, Halberd",
     img: person3,
@@ -121,8 +122,15 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
         <a href="#top" className="flex items-center gap-3">
+          <img
+            src={logoMark}
+            alt=""
+            width={512}
+            height={512}
+            className="h-8 w-8 object-contain"
+          />
           <span className="font-display text-2xl leading-none tracking-tight text-foreground">
-            Auric<span className="text-gold">.</span>
+            Moy9Web
           </span>
           <span className="hidden text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:inline">
             Est. MMXV
@@ -153,7 +161,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-40 pb-24 md:pt-56 md:pb-40">
+    <section id="top" className="relative isolate overflow-hidden pt-40 pb-32 md:pt-56 md:pb-40">
       <img
         src={heroImg}
         alt=""
@@ -175,7 +183,7 @@ function Hero() {
         </h1>
         <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Auric is a senior team of strategists, designers, and engineers building brand systems,
+            Moy9Web is a senior team of strategists, designers, and engineers building brand systems,
             digital products, and growth engines for companies that intend to last a hundred years.
           </p>
           <div className="flex flex-wrap items-center gap-4">
@@ -309,19 +317,19 @@ function Portfolio() {
                 i % 2 === 1 ? "md:[&>figure]:order-2" : ""
               }`}
             >
-              <figure className="md:col-span-7">
-                <div className="overflow-hidden">
+              <figure className="md:col-span-5">
+                <div className="overflow-hidden aspect-[4/3]">
                   <img
                     src={w.img}
                     alt={`${w.client} — ${w.title}`}
                     width={1200}
-                    height={1400}
+                    height={900}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.03]"
                   />
                 </div>
               </figure>
-              <div className="md:col-span-5">
+              <div className="md:col-span-7">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{w.tag}</p>
                 <p className="mt-4 font-display text-2xl italic text-muted-foreground">
                   {w.client}
@@ -433,7 +441,7 @@ function Contact() {
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Email
                 </dt>
-                <dd className="text-foreground">studio@auric.agency</dd>
+                <dd className="text-foreground">studio@moy9web.com</dd>
               </div>
               <div className="flex gap-6">
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -445,7 +453,7 @@ function Contact() {
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Press
                 </dt>
-                <dd className="text-foreground">press@auric.agency</dd>
+                <dd className="text-foreground">press@moy9web.com</dd>
               </div>
             </dl>
           </div>
@@ -557,7 +565,7 @@ function Footer() {
       <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
           <p className="font-display text-4xl leading-none">
-            Auric<span className="text-gold">.</span>
+            Moy9Web
           </p>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             A boutique IT and marketing atelier for brands with a hundred-year horizon.
@@ -586,7 +594,7 @@ function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-6 text-[11px] uppercase tracking-[0.25em] text-muted-foreground md:flex-row md:items-center md:justify-between md:px-12">
-          <p>© {new Date().getFullYear()} Auric Agency. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Moy9Web Agency. All rights reserved.</p>
           <p>Crafted in three time zones.</p>
         </div>
       </div>
