@@ -75,14 +75,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Auric — IT & Marketing Agency for Ambitious Brands" },
+      { title: "Moy9Web — IT & Marketing Agency for Ambitious Brands" },
       {
         name: "description",
         content:
-          "Auric is a boutique IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies.",
+          "Moy9Web is a boutique IT and marketing agency crafting brand systems, digital products, and growth engines for category-defining companies.",
       },
-      { name: "author", content: "Auric Agency" },
-      { property: "og:title", content: "Auric — IT & Marketing Agency" },
+      { name: "author", content: "Moy9Web Agency" },
+      { property: "og:title", content: "Moy9Web — IT & Marketing Agency" },
       {
         property: "og:description",
         content: "Brand, product, and growth for category-defining companies.",
