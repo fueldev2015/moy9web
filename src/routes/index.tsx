@@ -483,7 +483,7 @@ function Testimonials() {
   );
 }
 
-type Errors = Partial<Record<"name" | "email" | "message", string>>;
+type Errors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 
 function Contact() {
   const [errors, setErrors] = useState<Errors>({});
