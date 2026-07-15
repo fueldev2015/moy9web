@@ -1,6 +1,6 @@
 import { render } from "@react-email/render";
 import { sendLovableEmail, EmailAPIError } from "@lovable.dev/email-js";
-import type { TemplateRegistry } from "./registry";
+import { TEMPLATES, type TemplateRegistry } from "./registry";
 
 const API_BASE_URL = "https://api.lovable.dev";
 const SENDER_DOMAIN = process.env.EMAIL_SENDER_DOMAIN || "moy9web.com";
@@ -27,16 +27,26 @@ export type SendTemplateEmailResult = SendResult | SuppressedResult;
 export async function sendTemplateEmail<TemplateName extends keyof TemplateRegistry>(
   templateName: TemplateName,
   to: string,
-  options: SendTemplateEmailOptions<TemplateRegistry[TemplateName] extends { component: (props: infer P) => unknown } ? P : Record<string, unknown>>,
+  options: SendTemplateEmailOptions<
+    TemplateRegistry[TemplateName] extends { component: (props: infer P) => unknown }
+      ? P extends Record<string, unknown>
+        ? P
+        : Record<string, unknown>
+      : Record<string, unknown>
+  >,
 ): Promise<SendTemplateEmailResult> {
   const apiKey = process.env.LOVABLE_API_KEY;
   if (!apiKey) {
     throw new Error("Missing LOVABLE_API_KEY");
   }
 
+  const entry = TEMPLATES[templateName];
+  if (!entry) {
+    throw new Error(`Unknown email template: ${String(templateName)}`);
+  }
+
   const { templateData, idempotencyKey, replyTo } = options;
 
-  const entry = (await import(`./${templateName as string}`)).template as TemplateRegistry[TemplateName];
   const Component = entry.component;
   const element = Component(templateData as never);
 
