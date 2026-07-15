@@ -34,7 +34,7 @@ const services = [
     n: "02",
     title: "Digital Products",
     body: "Websites and applications engineered like couture — pixel-precise, performant, and built to convert.",
-    detail: ["Web platforms", "Product design", "Headless CMS"],
+    detail: ["Web platforms", "Product design", "AI & Automation", "API & Payment Integrations"],
   },
   {
     n: "03",
