@@ -297,10 +297,10 @@ function Hero() {
 
         <dl className="mt-16 grid grid-cols-2 gap-y-8 border-t border-border pt-10 md:grid-cols-4">
           {[
-            ["11", "Years in practice"],
-            ["87", "Brands shaped"],
-            ["$1.4B", "Client revenue driven"],
-            ["19", "Design awards"],
+            ["10+", "Years Experience"],
+            ["150+", "Projects Delivered"],
+            ["25+", "Countries Served"],
+            ["99%", "Client Satisfaction"],
           ].map(([k, v]) => (
             <div key={v}>
               <dt className="font-display text-4xl text-gold md:text-5xl">{k}</dt>
