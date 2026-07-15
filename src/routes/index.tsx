@@ -600,11 +600,13 @@ function Contact() {
                     <p className="mt-2 text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
+                {errors.message && !document?.querySelector('textarea[name="message"]')?.closest("form") && null}
                 <button
                   type="submit"
-                  className="mt-10 inline-flex w-full items-center justify-center gap-3 bg-gold px-8 py-4 text-xs uppercase tracking-[0.3em] text-primary-foreground transition-opacity hover:opacity-90"
+                  disabled={submitting}
+                  className="mt-10 inline-flex w-full items-center justify-center gap-3 bg-gold px-8 py-4 text-xs uppercase tracking-[0.3em] text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Send inquiry
+                  {submitting ? "Sending…" : "Send inquiry"}
                   <span aria-hidden>→</span>
                 </button>
               </>
