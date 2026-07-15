@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { template as contactInquiry } from "./contact-inquiry";
 
 export interface TemplateEntry<Props extends Record<string, unknown> = Record<string, unknown>> {
   component: (props: Props) => ReactElement;
@@ -8,4 +9,10 @@ export interface TemplateEntry<Props extends Record<string, unknown> = Record<st
   to?: string;
 }
 
-export type TemplateRegistry = Record<string, TemplateEntry>;
+export type TemplateRegistry = {
+  "contact-inquiry": typeof contactInquiry;
+};
+
+export const TEMPLATES: { [K in keyof TemplateRegistry]: TemplateRegistry[K] } = {
+  "contact-inquiry": contactInquiry,
+};
