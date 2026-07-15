@@ -647,28 +647,6 @@ function Field({
   );
 }
 
-function SelectField({ label, name }: { label: string; name: string }) {
-  return (
-    <div>
-      <label className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-        {label}
-      </label>
-      <select
-        name={name}
-        defaultValue=""
-        className="mt-2 w-full border-b border-border bg-transparent py-3 text-base text-foreground focus:border-gold focus:outline-none"
-      >
-        <option value="" className="bg-background">
-          Select a range
-        </option>
-        <option className="bg-background">$25k – $75k</option>
-        <option className="bg-background">$75k – $200k</option>
-        <option className="bg-background">$200k – $500k</option>
-        <option className="bg-background">$500k+</option>
-      </select>
-    </div>
-  );
-}
 
 function Footer() {
   return (
