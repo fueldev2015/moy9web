@@ -98,7 +98,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Enter a valid email").max(255),
   company: z.string().trim().max(120).optional(),
-  budget: z.string().max(60).optional(),
+  phone: z.string().trim().max(40).optional(),
   message: z.string().trim().min(10, "Tell us a little more").max(2000),
 });
 
@@ -483,22 +483,25 @@ function Testimonials() {
   );
 }
 
-type Errors = Partial<Record<"name" | "email" | "message", string>>;
+type Errors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 
 function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitting(true);
     const fd = new FormData(e.currentTarget);
-    const parsed = contactSchema.safeParse({
+    const payload = {
       name: fd.get("name"),
       email: fd.get("email"),
       company: fd.get("company") ?? undefined,
-      budget: fd.get("budget") ?? undefined,
+      phone: fd.get("phone") ?? undefined,
       message: fd.get("message"),
-    });
+    };
+    const parsed = contactSchema.safeParse(payload);
     if (!parsed.success) {
       const next: Errors = {};
       for (const issue of parsed.error.issues) {
@@ -506,10 +509,29 @@ function Contact() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
+      setSubmitting(false);
       return;
     }
     setErrors({});
-    setSent(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setErrors({ message: data.error || "Something went wrong. Please try again." });
+        setSubmitting(false);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setErrors({ message: "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -532,19 +554,13 @@ function Contact() {
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Email
                 </dt>
-                <dd className="text-foreground">studio@moy9web.com</dd>
+                <dd className="text-foreground">omar@moy9web.com</dd>
               </div>
               <div className="flex gap-6">
                 <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                   Studios
                 </dt>
                 <dd className="text-foreground">New York · London · Milan</dd>
-              </div>
-              <div className="flex gap-6">
-                <dt className="w-24 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-                  Press
-                </dt>
-                <dd className="text-foreground">press@moy9web.com</dd>
               </div>
             </dl>
           </div>
@@ -567,7 +583,7 @@ function Contact() {
                   <Field label="Name" name="name" error={errors.name} />
                   <Field label="Email" name="email" type="email" error={errors.email} />
                   <Field label="Company" name="company" />
-                  <SelectField label="Budget" name="budget" />
+                  <Field label="Phone" name="phone" type="tel" error={errors.phone} />
                 </div>
                 <div className="mt-6">
                   <label className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -584,11 +600,15 @@ function Contact() {
                     <p className="mt-2 text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
+                {errors.message && (
+                  <p className="mt-3 text-xs text-destructive">{errors.message}</p>
+                )}
                 <button
                   type="submit"
-                  className="mt-10 inline-flex w-full items-center justify-center gap-3 bg-gold px-8 py-4 text-xs uppercase tracking-[0.3em] text-primary-foreground transition-opacity hover:opacity-90"
+                  disabled={submitting}
+                  className="mt-10 inline-flex w-full items-center justify-center gap-3 bg-gold px-8 py-4 text-xs uppercase tracking-[0.3em] text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Send inquiry
+                  {submitting ? "Sending…" : "Send inquiry"}
                   <span aria-hidden>→</span>
                 </button>
               </>
@@ -627,28 +647,6 @@ function Field({
   );
 }
 
-function SelectField({ label, name }: { label: string; name: string }) {
-  return (
-    <div>
-      <label className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-        {label}
-      </label>
-      <select
-        name={name}
-        defaultValue=""
-        className="mt-2 w-full border-b border-border bg-transparent py-3 text-base text-foreground focus:border-gold focus:outline-none"
-      >
-        <option value="" className="bg-background">
-          Select a range
-        </option>
-        <option className="bg-background">$25k – $75k</option>
-        <option className="bg-background">$75k – $200k</option>
-        <option className="bg-background">$200k – $500k</option>
-        <option className="bg-background">$500k+</option>
-      </select>
-    </div>
-  );
-}
 
 function Footer() {
   return (
