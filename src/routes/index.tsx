@@ -488,17 +488,20 @@ type Errors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitting(true);
     const fd = new FormData(e.currentTarget);
-    const parsed = contactSchema.safeParse({
+    const payload = {
       name: fd.get("name"),
       email: fd.get("email"),
       company: fd.get("company") ?? undefined,
-      budget: fd.get("budget") ?? undefined,
+      phone: fd.get("phone") ?? undefined,
       message: fd.get("message"),
-    });
+    };
+    const parsed = contactSchema.safeParse(payload);
     if (!parsed.success) {
       const next: Errors = {};
       for (const issue of parsed.error.issues) {
@@ -506,10 +509,29 @@ function Contact() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
+      setSubmitting(false);
       return;
     }
     setErrors({});
-    setSent(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setErrors({ message: data.error || "Something went wrong. Please try again." });
+        setSubmitting(false);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setErrors({ message: "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
