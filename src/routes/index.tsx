@@ -583,7 +583,7 @@ function Contact() {
                   <Field label="Name" name="name" error={errors.name} />
                   <Field label="Email" name="email" type="email" error={errors.email} />
                   <Field label="Company" name="company" />
-                  <SelectField label="Budget" name="budget" />
+                  <Field label="Phone" name="phone" type="tel" error={errors.phone} />
                 </div>
                 <div className="mt-6">
                   <label className="block text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
