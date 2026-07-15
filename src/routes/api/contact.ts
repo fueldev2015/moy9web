@@ -58,6 +58,13 @@ export const Route = createFileRoute("/api/contact")({
 
           return Response.json({ ok: true });
         } catch (error) {
+          if (error instanceof EmailAPIError && (error.status === 403 || error.code === "no_matching_sender" || error.code === "domain_not_verified")) {
+            console.error("Contact form send failed: sender domain not verified");
+            return Response.json(
+              { error: "Email sending is not yet configured for this domain. Please verify moy9web.com in your email settings." },
+              { status: 503 },
+            );
+          }
           const message = error instanceof Error ? error.message : "Email delivery failed";
           console.error("Contact form send failed:", message);
           return Response.json({ error: "Unable to send inquiry right now. Please try again." }, { status: 500 });
