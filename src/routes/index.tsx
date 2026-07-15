@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
@@ -169,8 +169,45 @@ function Header() {
 }
 
 function Hero() {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const slides = [
+    {
+      kicker: "Growth Systems",
+      title: "Scale beyond borders with growth systems engineered for international markets.",
+      tags: ["SEO", "Performance Marketing", "Social Media", "Analytics", "Technical Growth"],
+    },
+    {
+      kicker: "Technology",
+      title: "Where marketing, technology, and automation work as one.",
+      tags: ["Custom Apps", "APIs", "AI", "Business Dashboards", "Integrations"],
+    },
+    {
+      kicker: "Boutique Atelier",
+      title: "Brands designed to last. Technology built to evolve.",
+      tags: ["Boutique IT & Marketing Atelier"],
+    },
+  ];
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, slides.length]);
+
+  const next = () => setActive((prev) => (prev + 1) % slides.length);
+  const prev = () => setActive((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-40 pb-24 md:pt-56 md:pb-32">
+    <section
+      id="top"
+      className="relative isolate overflow-hidden pt-40 pb-24 md:pt-56 md:pb-32"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <img
         src={heroImg}
         alt=""
@@ -181,21 +218,40 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/40 to-background" />
 
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-        <p className="mb-8 flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-gold">
-          <span className="h-px w-10 bg-gold/60" />
-          Boutique IT & marketing atelier
-        </p>
-        <h1 className="max-w-5xl font-display text-[clamp(3rem,9vw,9rem)] leading-[0.95] tracking-tight">
-          We build brands that
-          <br />
-          <em className="italic text-gold-gradient">behave like heirlooms.</em>
-        </h1>
-        <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-end">
-          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Moy9Web is a senior team of strategists, designers, and engineers building brand systems,
-            digital products, and growth engines for companies that intend to last a hundred years.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
+        <div className="relative min-h-[360px] md:min-h-[420px]">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.kicker}
+              className={`transition-all duration-700 ease-out ${
+                index === active
+                  ? "visible opacity-100 translate-y-0"
+                  : "invisible absolute inset-0 opacity-0 translate-y-4"
+              }`}
+              aria-hidden={index !== active}
+            >
+              <p className="mb-8 flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-gold">
+                <span className="h-px w-10 bg-gold/60" />
+                {slide.kicker}
+              </p>
+              <h1 className="max-w-5xl font-display text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] tracking-tight">
+                {slide.title}
+              </h1>
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                {slide.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-gold/40 px-4 py-2 text-[11px] uppercase tracking-[0.25em] text-gold/90"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
             <a
               href="#work"
               className="inline-flex items-center gap-3 bg-gold px-7 py-4 text-xs uppercase tracking-[0.25em] text-primary-foreground transition-opacity hover:opacity-90"
@@ -209,6 +265,40 @@ function Hero() {
             >
               Request an intro call
             </a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous slide"
+              className="inline-flex h-10 w-10 items-center justify-center border border-border text-foreground transition-colors hover:border-gold/60 hover:text-gold"
+            >
+              ←
+            </button>
+            <div className="flex items-center gap-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setActive(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`h-2 transition-all duration-300 ${
+                    index === active
+                      ? "w-8 bg-gold"
+                      : "w-2 bg-gold/30 hover:bg-gold/60"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next slide"
+              className="inline-flex h-10 w-10 items-center justify-center border border-border text-foreground transition-colors hover:border-gold/60 hover:text-gold"
+            >
+              →
+            </button>
           </div>
         </div>
 
