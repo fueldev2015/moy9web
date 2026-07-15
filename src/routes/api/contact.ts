@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
+import { EmailAPIError } from "@lovable.dev/email-js";
 import { sendTemplateEmail } from "@/lib/email-templates/send-email";
 
 const inquirySchema = z.object({
