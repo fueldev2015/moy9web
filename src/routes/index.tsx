@@ -600,7 +600,9 @@ function Contact() {
                     <p className="mt-2 text-xs text-destructive">{errors.message}</p>
                   )}
                 </div>
-                {errors.message && !document?.querySelector('textarea[name="message"]')?.closest("form") && null}
+                {errors.message && (
+                  <p className="mt-3 text-xs text-destructive">{errors.message}</p>
+                )}
                 <button
                   type="submit"
                   disabled={submitting}
