@@ -3,7 +3,8 @@ import { useState, useEffect, type FormEvent } from "react";
 import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
-import logoMark from "@/assets/moy9web-mark.png";
+import logoAsset from "@/assets/moy9web-logo.png.asset.json";
+import faviconAsset from "@/assets/moy9web-favicon.png.asset.json";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
