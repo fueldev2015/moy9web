@@ -3,7 +3,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
-import logoMark from "@/assets/moy9web-mark.png";
+import logoAsset from "@/assets/moy9web-logo.png.asset.json";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -118,24 +118,16 @@ function Index() {
 }
 
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const sizes = {
-    sm: { mark: "h-8 w-8", text: "text-xl" },
-    md: { mark: "h-9 w-9", text: "text-2xl" },
-    lg: { mark: "h-11 w-11", text: "text-3xl" },
-  };
-  const { mark, text } = sizes[size];
+  const heights = { sm: "h-9", md: "h-11", lg: "h-14" };
   return (
-    <a href="#top" className="inline-flex items-center gap-2">
+    <a href="#top" className={`inline-flex items-center ${heights[size]}`}>
       <img
-        src={logoMark}
+        src={logoAsset.url}
         alt="Moy9Web"
-        width={512}
-        height={512}
-        className={`${mark} object-contain`}
+        width={380}
+        height={219}
+        className="h-full w-auto object-contain"
       />
-      <span className={`font-display ${text} leading-none tracking-tight text-foreground`}>
-        Moy9Web
-      </span>
     </a>
   );
 }
