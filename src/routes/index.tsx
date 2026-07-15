@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import heroImg from "@/assets/hero.jpg";
 import logoAsset from "@/assets/moy9web-logo.png.asset.json";
+import logo from "@/assets/moy9web-logo.png";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -122,7 +123,7 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   return (
     <a href="#top" className={`inline-flex items-center ${heights[size]}`}>
       <img
-        src={logoAsset.url}
+        src={logo}
         alt="Moy9Web"
         width={380}
         height={219}
