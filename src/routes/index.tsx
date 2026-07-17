@@ -661,17 +661,45 @@ function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
           {[
-            { h: "Studio", i: ["About", "Work", "Voices"] },
-            { h: "Services", i: ["Brand", "Product", "Growth"] },
-            { h: "Elsewhere", i: ["Instagram", "LinkedIn", "Youtube"] },
+            {
+              h: "Studio",
+              i: [
+                { label: "About", href: "#top" },
+                { label: "Work", href: "#work" },
+                { label: "Voices", href: "#voices" },
+                { label: "Contact", href: "#contact" },
+              ],
+            },
+            {
+              h: "Services",
+              i: [
+                { label: "Brand", href: "#services" },
+                { label: "Product", href: "#services" },
+                { label: "Growth", href: "#services" },
+              ],
+            },
+            {
+              h: "Elsewhere",
+              i: [
+                { label: "Email", href: "mailto:omar@moy9web.com", external: true },
+                { label: "LinkedIn", href: "https://www.linkedin.com/", external: true },
+                { label: "Instagram", href: "https://www.instagram.com/", external: true },
+              ],
+            },
           ].map((c) => (
             <div key={c.h}>
               <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{c.h}</p>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {c.i.map((x) => (
-                  <li key={x}>
-                    <a href="#" className="hover:text-foreground">
-                      {x}
+                  <li key={x.label}>
+                    <a
+                      href={x.href}
+                      className="hover:text-foreground"
+                      {...("external" in x && x.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {x.label}
                     </a>
                   </li>
                 ))}
