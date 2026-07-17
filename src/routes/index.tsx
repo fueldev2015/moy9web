@@ -695,7 +695,7 @@ function Footer() {
                     <a
                       href={x.href}
                       className="hover:text-foreground"
-                      {...(x.external
+                      {...("external" in x && x.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
                     >
