@@ -661,9 +661,9 @@ function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-10 md:grid-cols-3">
           {[
-            { h: "Studio", i: ["About", "Careers", "Journal"] },
+            { h: "Studio", i: ["About", "Work", "Voices"] },
             { h: "Services", i: ["Brand", "Product", "Growth"] },
-            { h: "Elsewhere", i: ["Instagram", "LinkedIn", "Are.na"] },
+            { h: "Elsewhere", i: ["Instagram", "LinkedIn", "Youtube"] },
           ].map((c) => (
             <div key={c.h}>
               <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{c.h}</p>
